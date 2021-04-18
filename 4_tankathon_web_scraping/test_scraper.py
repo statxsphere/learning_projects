@@ -128,3 +128,7 @@ def collect_singleyr_stats(year):
             dbp.append(float(match9.text))
         except:
             dbp.append(None)
+
+def collect_all(years):
+    for year in years:
+        collect_singleyr_stats(year)
