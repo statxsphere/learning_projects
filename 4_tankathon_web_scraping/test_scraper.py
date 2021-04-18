@@ -36,9 +36,9 @@ def collect_singleyr_stats(year):
     for positions in soup.find_all('div', class_='mock-row-school-position'):
         position.append(positions.text[0:2].rstrip())
 
-    #pick
-    for picks in soup.find_all('div', class_='mock-row-pick-number'):
-        pick.append(int(picks.text))
+    # pick
+    for i in range(1, 61):
+        pick.append(i)
 
     # measurements
     for measurements in soup.find_all('div', class_='section height-weight'):
@@ -48,13 +48,13 @@ def collect_singleyr_stats(year):
         height.append(round(heights1 * 2.54, 1))
         weight.append(int(a[1].text[0:4]))
 
-    #age
+    # age
     for i in soup.find_all('div', class_='section year-age desktop'):
         x = i.find_all('div')
         c_year.append(x[0].text)
         age.append(float(x[1].text[0:4]))
 
-    # per-36
+    # game stats
     for stats in soup.find_all('div', class_='mock-row-stats'):
         try:
             match_36 = stats.find('div', class_='stats-per-36')
@@ -135,13 +135,14 @@ def collect_all(x):
         collect_singleyr_stats(year)
 
 
-collect_all(years)
-statDict = {'name': name, 'position': position, 'pick': pick, 'height_cm': height, 'weight_lb': weight,
-            'c_year': c_year, 'age': age, 'points': points, 'reb': rebounds, 'ast': assists, 'TS': TS, 'usg': usg,
-            'o_bpm': obp, 'd_bpm': dbp}
+if __name__ == '__main__':
+    collect_all(years)
+    statDict = {'name': name, 'position': position, 'pick': pick, 'height_cm': height, 'weight_lb': weight,
+                'c_year': c_year, 'age': age, 'points': points, 'reb': rebounds, 'ast': assists, 'TS': TS, 'usg': usg,
+                'o_bpm': obp, 'd_bpm': dbp}
 
-final = pd.DataFrame(statDict)
-final.to_csv('test/2011-2018.csv')
+    final = pd.DataFrame(statDict)
+    final.to_csv('test/2011-2018.csv')
 
 
 # tests
