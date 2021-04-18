@@ -20,15 +20,14 @@ TS = []
 usg = []
 obp = []
 dbp = []
-final = pd.DataFrame()
 
-file = requests.get(f"http://www.tankathon.com/past_drafts/2018").text
-soup = BeautifulSoup(file, 'lxml')
+
 
 
 def collect_singleyr_stats(year):
     file = requests.get(f"http://www.tankathon.com/past_drafts/{str(year)}").text
     soup = BeautifulSoup(file, 'lxml')
+    i = 1
     # name
     for names in soup.find_all('div', class_='mock-row-name'):
         name.append(names.text)
@@ -43,11 +42,11 @@ def collect_singleyr_stats(year):
 
     # measurements
     for measurements in soup.find_all('div', class_='section height-weight'):
-        a = measurements.text.split('"')
-        heights = a[0].split("'")
+        a = measurements.find_all('div')
+        heights = a[0].text.replace('"', '').split("'")
         heights1 = int(heights[0]) * 12 + float(heights[1])
         height.append(round(heights1 * 2.54, 1))
-        weight.append(int(a[1][0:4]))
+        weight.append(int(a[1].text[0:4]))
 
     #age
     for i in soup.find_all('div', class_='section year-age desktop'):
@@ -129,6 +128,25 @@ def collect_singleyr_stats(year):
         except:
             dbp.append(None)
 
-def collect_all(years):
-    for year in years:
+
+def collect_all(x):
+    for year in x:
+        print(f'collecting stats for year {year}')
         collect_singleyr_stats(year)
+
+
+collect_all(years)
+statDict = {'name': name, 'position': position, 'pick': pick, 'height_cm': height, 'weight_lb': weight,
+            'c_year': c_year, 'age': age, 'points': points, 'reb': rebounds, 'ast': assists, 'TS': TS, 'usg': usg,
+            'o_bpm': obp, 'd_bpm': dbp}
+
+final = pd.DataFrame(statDict)
+final.to_csv('test/2011-2018.csv')
+
+
+# tests
+# file = requests.get(f"http://www.tankathon.com/past_drafts/2012").text
+# soup = BeautifulSoup(file, 'lxml')
+
+
+
