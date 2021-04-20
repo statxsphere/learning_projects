@@ -11,18 +11,18 @@ class bcolors:
     UNDERLINE = '\033[4m'
 
 
-devil_fruits = [{'name':'gomu', 'dmg':40, 'range':'long'},
-                {'name':'mera', 'dmg':50, 'range':'medium'},
-                {'name':'gura', 'dmg':80, 'range':'v_long'}]
-
-
-def fruit_finder(x):
-    for i in devil_fruits:
-        if i['name'] == x:
-            return i['dmg']
-
-
-sword = {'good':40,'great':60,'supreme':80}
+# devil_fruits = [{'name':'gomu', 'dmg':40, 'range':'long'},
+#                 {'name':'mera', 'dmg':50, 'range':'medium'},
+#                 {'name':'gura', 'dmg':80, 'range':'v_long'}]
+#
+#
+# def fruit_finder(x):
+#     for i in devil_fruits:
+#         if i['name'] == x:
+#             return i['dmg']
+#
+#
+# sword = {'good':40,'great':60,'supreme':80}
 
 
 class Person:
@@ -44,20 +44,6 @@ class Person:
     def generate_damage(self):
         if not self.weapon and not self.fruit:
             return random.randrange(self.atkl, self.atkh)
-
-    def weapon_damage(self):
-        try:
-            dmg = sword[self.weapon]
-            return random.randrange(dmg - 10, dmg + 10)
-        except Exception:
-            print('This character does not have a weapon')
-
-    def fruit_damage(self):
-        try:
-            dmg = fruit_finder(self.fruit)
-            return random.randrange(dmg - 10, dmg + 10)
-        except Exception:
-            print('This character does not have a devil fruit')
 
     def take_damage(self, dmg):
         self.hp -= dmg
@@ -97,3 +83,13 @@ class Person:
         for item in self.attacks:
             print(str(i)+": "+item)
             i += 1
+
+
+class DevilFruit:
+    def __init__(self, name, damage, type, special=None):
+        self.name = name
+        self.dmg = damage
+        self.type = type
+        self.spl = special
+        self.immunity = True if self.type == "Logia" else False
+
