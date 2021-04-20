@@ -2,9 +2,10 @@ from bs4 import BeautifulSoup
 import requests
 import pandas as pd
 
+
 class ScrapingModule:
-    def __init__(self, start_yr, end_yr):
-        self.years = list(range(start_yr, end_yr + 1))
+    def __init__(self):
+        self.years = list(range(2004, 2021))
         self.name = []
         self.position = []
         self.pick = []
@@ -133,7 +134,13 @@ class ScrapingModule:
             self.collect_singleyr_stats(year)
             print('Done! Moving On.')
 
+    def set_years(self):
+        input1 = int(input('Enter starting year: '))
+        input2 = int(input('Enter ending year: '))
+        self.years = list(range(input1, input2+1))
+
     def final_call(self):
+        self.set_years()
         self.collect_all()
         statdict = {'name': self.name, 'position': self.position, 'pick': self.pick, 'height_cm': self.height,
                     'weight_lb': self.weight, 'c_year': self.c_year, 'age': self.age, 'points': self.points,
