@@ -39,14 +39,10 @@ class Person:
         self.weapon = weapon
         self.fruit = fruit
         self.actions = ['Attack', 'Block', 'Dodge']
-        self.attacks = ['Armament Haki', 'Melee', 'Weapon', 'Fruit']
-
-    def generate_damage(self):
-        if not self.weapon and not self.fruit:
-            return random.randrange(self.atkl, self.atkh)
+        self.attacks = ['Melee', 'Busoshoku', 'Devil Fruit', 'Haki Devil Fruit']
 
     def take_damage(self, dmg):
-        self.hp -= dmg
+        self.hp -= dmg/self.df
         if self.hp < 0:
             self.hp = 0
         return self.hp
@@ -83,6 +79,23 @@ class Person:
         for item in self.attacks:
             print(str(i)+": "+item)
             i += 1
+        choice = int(input('Make a choice: '))
+
+    def generate_damage(self, choice):
+        dmg = random.randint(self.atkl, self.atkh)
+        dmg1 = 0
+        if choice == 1:
+            dmg1 = dmg
+        elif choice == 2:
+            dmg1 = dmg * self.haki_attack
+        elif choice == 3:
+            dmg1 = dmg + self.fruit.damage
+        elif choice == 4:
+            dmg1 = (dmg + self.fruit.damage) * self.haki_attack/2
+        else:
+            ch = int(input('that option is invalid, please enter a number between 1-4: '))
+            dmg1 = self.generate_damage(ch)
+        return dmg1
 
 
 class DevilFruit:
