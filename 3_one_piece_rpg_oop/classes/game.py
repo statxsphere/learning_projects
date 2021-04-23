@@ -24,9 +24,20 @@ class bcolors:
 #
 # sword = {'good':40,'great':60,'supreme':80}
 
+class DevilFruit:
+    def __init__(self, name, damage, type, special=None):
+        self.name = name
+        self.dmg = damage
+        self.type = type
+        self.spl = special
+        self.immunity = True if self.type == "Logia" else False
+
+    def get_dmg(self, attack):
+        return attack + self.dmg
+
 
 class Person:
-    def __init__(self, hp, haki, hcost, atk, df, weapon=None, fruit=None):
+    def __init__(self, hp, haki, hcost, atk, df, fruit=None, weapon=None):
         self.maxhp = hp
         self.hp = hp
         self.maxhaki = haki
@@ -38,8 +49,12 @@ class Person:
         self.df = df
         self.weapon = weapon
         self.fruit = fruit
+        self.fruit_attack = self.fruit.get_dmg(self.atk) if fruit else None
         self.actions = ['Attack', 'Block', 'Dodge']
         self.attacks = ['Melee', 'Busoshoku', 'Devil Fruit', 'Haki Devil Fruit']
+
+    def get_fruit_dmg(self):
+        return random.randint(self.fruit_attack - 10, self.fruit_attack + 10)
 
     def take_damage(self, dmg):
         self.hp -= dmg/self.df
@@ -80,29 +95,25 @@ class Person:
             print(str(i)+": "+item)
             i += 1
         choice = int(input('Make a choice: '))
+        return choice
 
     def generate_damage(self, choice):
         dmg = random.randint(self.atkl, self.atkh)
-        dmg1 = 0
         if choice == 1:
-            dmg1 = dmg
+            return dmg
         elif choice == 2:
-            dmg1 = dmg * self.haki_attack
+            return dmg * self.haki_attack
         elif choice == 3:
-            dmg1 = dmg + self.fruit.damage
+            return self.get_fruit_dmg()
         elif choice == 4:
-            dmg1 = (dmg + self.fruit.damage) * self.haki_attack/2
-        else:
-            ch = int(input('that option is invalid, please enter a number between 1-4: '))
-            dmg1 = self.generate_damage(ch)
-        return dmg1
+            return self.get_fruit_dmg() * self.haki_attack/2
+        # else:
+        #     ch = int(input('that option is invalid, please enter a number between 1-4: '))
+        #     dmg1 = self.generate_damage(ch)
+        # return dmg1
 
 
-class DevilFruit:
-    def __init__(self, name, damage, type, special=None):
-        self.name = name
-        self.dmg = damage
-        self.type = type
-        self.spl = special
-        self.immunity = True if self.type == "Logia" else False
+    def haki_damage(self, choice):
+        return self.generate_damage() * self.haki_attack
+
 
