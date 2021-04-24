@@ -114,3 +114,12 @@ class Person:
         else:
             ch = int(input('that option is invalid, please enter a number between 1-4: '))
             return self.generate_damage(ch)
+
+
+class Enemy(Person):
+    def __init__(self, hp, haki, hcost, atk, df, fruit=None, weapon=None):
+        super().__init__(hp, haki, hcost, atk, df, fruit=None, weapon=None)
+
+    def attack(self):
+        choice = random.randint(1, 4)
+        self.generate_damage(choice)
