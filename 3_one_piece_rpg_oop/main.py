@@ -1,9 +1,11 @@
 from classes.game import bcolors, Person, DevilFruit
+from classes.game import DevilFruits as Df
+
 
 gomu = DevilFruit('gomu', 30, 'paramecia')
 
 
-Luffy = Person(500, 1000, 50, 40, 50, fruit=gomu)
+Luffy = Person(500, 1000, 50, 40, 50, fruit=Df.gomu)
 Zoro = Person(600,600, 35, 45, 35, fruit=None)
 
 print(Luffy.get_fruit_dmg())

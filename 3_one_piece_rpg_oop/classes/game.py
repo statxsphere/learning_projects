@@ -36,6 +36,10 @@ class DevilFruit:
         return attack + self.dmg
 
 
+class DevilFruits:
+    gomu = DevilFruit('gomu', 30, 'paramecia')
+
+
 class Person:
     def __init__(self, hp, haki, hcost, atk, df, fruit=None, weapon=None):
         self.maxhp = hp
@@ -107,13 +111,6 @@ class Person:
             return self.get_fruit_dmg()
         elif choice == 4:
             return self.get_fruit_dmg() * self.haki_attack/2
-        # else:
-        #     ch = int(input('that option is invalid, please enter a number between 1-4: '))
-        #     dmg1 = self.generate_damage(ch)
-        # return dmg1
-
-
-    def haki_damage(self, choice):
-        return self.generate_damage() * self.haki_attack
-
-
+        else:
+            ch = int(input('that option is invalid, please enter a number between 1-4: '))
+            return self.generate_damage(ch)
