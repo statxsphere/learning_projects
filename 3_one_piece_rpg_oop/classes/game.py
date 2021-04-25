@@ -102,18 +102,21 @@ class Person:
         return choice
 
     def generate_damage(self, choice):
-        dmg = random.randint(self.atkl, self.atkh)
-        if choice == 1:
-            return dmg
-        elif choice == 2:
-            return dmg * self.haki_attack
-        elif choice == 3:
-            return self.get_fruit_dmg()
-        elif choice == 4:
-            return self.get_fruit_dmg() * self.haki_attack/2
-        else:
-            ch = int(input('that option is invalid, please enter a number between 1-4: '))
-            return self.generate_damage(ch)
+        try:
+            dmg = random.randint(self.atkl, self.atkh)
+            if choice == 1:
+                return dmg
+            elif choice == 2:
+                return dmg * self.haki_attack
+            elif choice == 3:
+                return self.get_fruit_dmg()
+            elif choice == 4:
+                return self.get_fruit_dmg() * self.haki_attack/2
+            else:
+                ch = int(input('that option is invalid, please enter a number between 1-4: '))
+                return self.generate_damage(ch)
+        except TypeError:
+            return 0.0
 
 
 class Enemy(Person):
@@ -121,5 +124,5 @@ class Enemy(Person):
         super().__init__(hp, haki, hcost, atk, df, fruit=None, weapon=None)
 
     def attack(self):
-        choice = random.randint(1, 4)
-        self.generate_damage(choice)
+        choice = random.randint(1,5)
+        return self.generate_damage(choice)
