@@ -41,7 +41,8 @@ class DevilFruits:
 
 
 class Person:
-    def __init__(self, hp, haki, hcost, atk, df, fruit=None, weapon=None):
+    def __init__(self, name, hp, haki, hcost, atk, df, fruit=None, weapon=None):
+        self.name = name
         self.maxhp = hp
         self.hp = hp
         self.maxhaki = haki
@@ -120,9 +121,10 @@ class Person:
 
 
 class Enemy(Person):
-    def __init__(self, hp, haki, hcost, atk, df, fruit=None, weapon=None):
-        super().__init__(hp, haki, hcost, atk, df, fruit=None, weapon=None)
+    def __init__(self, name, hp, haki, hcost, atk, df, fruit=None, weapon=None):
+        super().__init__(name, hp, haki, hcost, atk, df, fruit=None, weapon=None)
 
     def attack(self):
-        choice = random.randint(1,5)
+        choice = 1
+        # random.randint(1, 5)
         return self.generate_damage(choice)
