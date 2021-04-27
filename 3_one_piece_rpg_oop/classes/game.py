@@ -40,6 +40,15 @@ class DevilFruits:
     gomu = DevilFruit('gomu', 30, 'paramecia')
 
 
+class Weapon:
+    def __init__(self, name, damage, grade):
+        self.name = name
+        self.damage = damage
+        self.grade = grade
+        self.use_count = 0
+
+
+
 class Person:
     def __init__(self, name, hp, haki, hcost, atk, df, fruit=None, weapon=None):
         self.name = name
@@ -121,10 +130,7 @@ class Person:
 
 
 class Enemy(Person):
-    def __init__(self, name, hp, haki, hcost, atk, df, fruit=None, weapon=None):
-        super().__init__(name, hp, haki, hcost, atk, df, fruit=None, weapon=None)
 
     def attack(self):
-        choice = 1
-        # random.randint(1, 5)
+        choice = random.randint(1, 5)
         return self.generate_damage(choice)
