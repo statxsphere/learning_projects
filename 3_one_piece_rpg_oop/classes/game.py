@@ -124,9 +124,17 @@ class Person:
         choice = int(input('Make a choice: '))
         return choice
 
+    def get_weapon_dmg(self):
+        return 0
+
     def generate_damage(self, choice):
+        dmg = random.randint(self.atkl, self.atkh)
         if not self.fruit and not self.weapon:
-            dmg = random.randint(self.atkl, self.atkh)
+            if choice == 1:
+                return dmg
+            elif choice == 2:
+                return dmg * self.haki_attack
+        if self.fruit and not self.weapon:
             if choice == 1:
                 return dmg
             elif choice == 2:
@@ -135,14 +143,34 @@ class Person:
                 return self.get_fruit_dmg()
             elif choice == 4:
                 return self.get_fruit_dmg() * self.haki_attack/2
-            else:
-                ch = int(input('that option is invalid, please enter a number between 1-4: '))
-                return self.generate_damage(ch)
-
+        if not self.fruit and self.weapon:
+            if choice == 1:
+                return dmg
+            elif choice == 2:
+                return dmg * self.haki_attack
+            elif choice == 3:
+                return self.get_weapon_dmg()
+            elif choice == 4:
+                return self.get_weapon_dmg() * self.haki_attack / 2
+        if self.fruit and self.weapon:
+            if choice == 1:
+                return dmg
+            elif choice == 2:
+                return dmg * self.haki_attack
+            elif choice == 3:
+                return self.get_fruit_dmg()
+            elif choice == 4:
+                return self.get_fruit_dmg() * self.haki_attack/2
+            elif choice == 5:
+                return self.get_weapon_dmg()
+            elif choice == 6:
+                return self.get_weapon_dmg() * self.haki_attack / 2
+        if choice not in range(1, len(self.attacks)+1):
+            ch = int(input(f'That option is invalid, please enter a number between 1-{len(self.attacks)+1}: '))
+            return self.generate_damage(ch)
 
 
 class Enemy(Person):
-
     def attack(self):
-        choice = random.randint(1, 5)
+        choice = random.randint(1, len(self.attacks)+1)
         return self.generate_damage(choice)
