@@ -43,10 +43,15 @@ class DevilFruits:
 class Weapon:
     def __init__(self, name, damage, grade):
         self.name = name
-        self.damage = damage
+        self.dmg = damage
         self.grade = grade
         self.use_count = 0
 
+    def weapon_use(self):
+        self.use_count += 1
+
+    def get_dmg(self, attack):
+        return attack + self.dmg
 
 
 class Person:
@@ -65,10 +70,18 @@ class Person:
         self.fruit = fruit
         self.fruit_attack = self.fruit.get_dmg(self.atk) if fruit else None
         self.actions = ['Attack', 'Block', 'Dodge']
-        self.attacks = ['Melee', 'Busoshoku', 'Devil Fruit', 'Haki Devil Fruit']
+        if not self.fruit and not self.weapon:
+            self.attacks = ['Melee', 'Armament Haki']
+        elif self.fruit and not self.weapon:
+            self.attacks = ['Melee', 'Armament Haki', 'Devil Fruit Attack', 'Armament: Devil Fruit']
+        elif self.weapon and not self.fruit:
+            self.attacks = ['Melee', 'Armament Haki', 'Use Weapon', 'Armament: Weapon']
+        elif self.weapon and not self.fruit:
+            self.attacks = ['Melee', 'Armament Haki', 'Devil Fruit Attack', 'Armament: Devil Fruit',
+                            'Use Weapon', 'Armament: Weapon']
 
     def get_fruit_dmg(self):
-        return random.randint(self.fruit_attack - 10, self.fruit_attack + 10)
+        return random.randint(self.fruit_attack - 10, self.fruit_attack + 10) if self.fruit else 0
 
     def take_damage(self, dmg):
         self.hp -= dmg/self.df
@@ -112,7 +125,7 @@ class Person:
         return choice
 
     def generate_damage(self, choice):
-        try:
+        if not self.fruit and not self.weapon:
             dmg = random.randint(self.atkl, self.atkh)
             if choice == 1:
                 return dmg
@@ -125,8 +138,7 @@ class Person:
             else:
                 ch = int(input('that option is invalid, please enter a number between 1-4: '))
                 return self.generate_damage(ch)
-        except TypeError:
-            return 0.0
+
 
 
 class Enemy(Person):
