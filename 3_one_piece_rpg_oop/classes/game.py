@@ -125,7 +125,9 @@ class Person:
         return choice
 
     def get_weapon_dmg(self):
-        return 0
+        for i in self.weapon:
+            dmg = i.get_dmg(self.atk)
+            return random.randint(dmg - 10, dmg + 10)
 
     def generate_damage(self, choice):
         dmg = random.randint(self.atkl, self.atkh)
