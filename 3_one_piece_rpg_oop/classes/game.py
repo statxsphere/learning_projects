@@ -35,11 +35,6 @@ class DevilFruit:
     def get_dmg(self, attack):
         return attack + self.dmg
 
-
-class DevilFruits:
-    gomu = DevilFruit('gomu', 30, 'paramecia')
-
-
 class Weapon:
     def __init__(self, name, damage, grade):
         self.name = name
@@ -52,6 +47,14 @@ class Weapon:
 
     def get_dmg(self, attack):
         return attack + self.dmg
+
+
+class DevilFruits:
+    gomu = DevilFruit('gomu', 30, 'paramecia')
+
+
+class Weapons:
+    Enma = Weapon('Enma', 30, 'Great')
 
 
 class Person:
@@ -125,8 +128,12 @@ class Person:
         return choice
 
     def get_weapon_dmg(self):
-        for i in self.weapon:
-            dmg = i.get_dmg(self.atk)
+        try:
+            for i in self.weapon:
+                dmg = i.get_dmg(self.atk)
+                return random.randint(dmg - 10, dmg + 10)
+        except:
+            dmg = self.weapon.get_dmg(self.atk)
             return random.randint(dmg - 10, dmg + 10)
 
     def generate_damage(self, choice):
