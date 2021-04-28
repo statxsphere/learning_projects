@@ -124,6 +124,7 @@ class Person:
         for item in self.attacks:
             print(str(i)+": "+item)
             i += 1
+        print('')
         choice = int(input('Make a choice: '))
         return choice
 
@@ -175,11 +176,11 @@ class Person:
             elif choice == 6:
                 return self.get_weapon_dmg() * self.haki_attack / 2
         if choice not in range(1, len(self.attacks)+1):
-            ch = int(input(f'That option is invalid, please enter a number between 1-{len(self.attacks)+1}: '))
+            ch = int(input(f'That option is invalid, please enter a number between 1-{len(self.attacks)}: '))
             return self.generate_damage(ch)
 
 
 class Enemy(Person):
     def attack(self):
-        choice = random.randint(1, len(self.attacks)+1)
+        choice = random.randint(1, len(self.attacks))
         return self.generate_damage(choice)
