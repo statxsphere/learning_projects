@@ -3,9 +3,6 @@ from classes.game import DevilFruits as Df
 from classes.game import Weapons as Wp
 
 
-gomu = DevilFruit('gomu', 30, 'paramecia')
-Enma = Weapon('Enma', 30, 'Great')
-
 Luffy = Person('Luffy', 500, 1000, 50, 40, 50, fruit=Df.gomu)
 Zoro = Person('Zoro', 600, 600, 35, 45, 35, weapon=Wp.Enma)
 
