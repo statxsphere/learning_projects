@@ -39,6 +39,7 @@ while running:
         if dmg1 < 0:
             dmg1 = 0
 
+
     if ch1.hp == 0:
         print('Oh no, you lose!')
         break
