@@ -39,6 +39,8 @@ while running:
         if dmg1 < 0:
             dmg1 = 0
 
+    if choice1 == 3:
+        dmg1 = ch1.dodge(dmg1)
 
     if ch1.hp == 0:
         print('Oh no, you lose!')
