@@ -118,6 +118,9 @@ class Person:
         for item in self.actions:
             print(str(i)+": "+item)
             i += 1
+        print('')
+        choice = int(input('Make a choice: '))
+        return choice
 
     def choose_attack(self):
         i = 1
