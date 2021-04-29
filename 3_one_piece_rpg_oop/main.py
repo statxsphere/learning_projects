@@ -48,9 +48,14 @@ while running:
         print('Yay! You win.')
         break
 
-    print(f'Oh no! {ch1.name} took {dmg1/ch1.df} damage, his HP is now: ')
-    print(ch1.take_damage(dmg1))
-    print('')
+    if dmg1 > 0:
+        print(f'Oh no! {ch1.name} took {dmg1/ch1.df} damage, his HP is now: ')
+        print(ch1.take_damage(dmg1))
+        print('')
+    else:
+        print(f'{ch1.name} did not take any damage! His current HP is:')
+        print(ch1.take_damage(dmg1))
+        print('')
 
     if ch1.hp == 0:
         print('Oh no, you lose!')

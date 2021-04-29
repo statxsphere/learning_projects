@@ -114,6 +114,7 @@ class Person:
         return self.haki_attack
 
     def choose_action(self):
+        print('What will you do?\n')
         i = 1
         for item in self.actions:
             print(str(i)+": "+item)
@@ -123,6 +124,7 @@ class Person:
         return choice
 
     def choose_attack(self):
+        print('What attack will you use?\n')
         i = 1
         for item in self.attacks:
             print(str(i)+": "+item)
@@ -135,8 +137,10 @@ class Person:
     def dodge(dmg):
         rand = random.randint(0,100)
         if rand > 55:
+            print('\n You failed to dodge! \n')
             return dmg
         else:
+            print('\n You dodged successfully! \n')
             return 0
 
     def get_weapon_dmg(self):
