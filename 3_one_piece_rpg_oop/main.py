@@ -22,6 +22,7 @@ enemy = Enemy(ch2.name, ch2.hp, ch2.haki, ch2.haki_attack, ch2.atk, ch2.df, frui
 running = True
 
 while running:
+    choice1 = ch1.choose_action()
     choice = ch1.choose_attack()
     dmg = ch1.generate_damage(choice)
 
