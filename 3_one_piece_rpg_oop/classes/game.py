@@ -128,6 +128,14 @@ class Person:
         choice = int(input('Make a choice: '))
         return choice
 
+    @staticmethod
+    def dodge(dmg):
+        rand = random.randint(0,100)
+        if rand > 55:
+            return dmg
+        else:
+            return 0
+
     def get_weapon_dmg(self):
         try:
             for i in self.weapon:
