@@ -1,6 +1,7 @@
 from classes.game import bcolors, Person, Enemy, DevilFruit, Weapon
 from classes.game import DevilFruits as Df
 from classes.game import Weapons as Wp
+import random
 
 
 Luffy = Person('Luffy', 500, 1000, 50, 40, 50, fruit=Df.gomu)
@@ -23,12 +24,20 @@ running = True
 
 while running:
     choice1 = ch1.choose_action()
-    choice = ch1.choose_attack()
-    dmg = ch1.generate_damage(choice)
+    dmg1 = enemy.attack()
 
-    print(f'You attack! {enemy.name} took {dmg/enemy.df} damage, his HP is now: ')
-    print(enemy.take_damage(dmg))
-    print('')
+    if choice1 == 1:
+        choice = ch1.choose_attack()
+        dmg = ch1.generate_damage(choice)
+
+        print(f'You attack! {enemy.name} took {dmg/enemy.df} damage, his HP is now: ')
+        print(enemy.take_damage(dmg))
+        print('')
+
+    if choice1 == 2:
+        dmg1 = dmg1 - ch1.df
+        if dmg1 < 0:
+            dmg1 = 0
 
     if ch1.hp == 0:
         print('Oh no, you lose!')
@@ -38,10 +47,8 @@ while running:
         print('Yay! You win.')
         break
 
-    dmg1 = enemy.attack()
-
     print(f'Oh no! {ch1.name} took {dmg1/ch1.df} damage, his HP is now: ')
-    print(ch1.take_damage(dmg))
+    print(ch1.take_damage(dmg1))
     print('')
 
     if ch1.hp == 0:
