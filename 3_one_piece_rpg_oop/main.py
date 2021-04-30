@@ -1,6 +1,8 @@
-from classes.game import bcolors, Person, Enemy
+from classes.game import Person, Enemy
 from classes.game import DevilFruits as Df
 from classes.game import Weapons as Wp
+from classes.game import FColors as col
+
 
 Luffy = Person('Luffy', 500, 1000, 50, 40, 50, fruit=Df.gomu)
 Zoro = Person('Zoro', 600, 600, 35, 45, 35, weapon=Wp.Enma)
