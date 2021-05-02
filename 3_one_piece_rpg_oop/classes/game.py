@@ -69,64 +69,64 @@ class Weapons:
 
 class Person:
     def __init__(self, name, hp, haki, hcost, atk, df, fruit=None, weapon=None):
-        self.name = name
-        self.maxhp = hp
-        self.hp = hp
-        self.maxhaki = haki
-        self.haki = haki
-        self.haki_attack = hcost
-        self.atk = atk
-        self.atkh = atk + 10
-        self.atkl = atk - 10
-        self.df = df
-        self.weapon = weapon
-        self.fruit = fruit
-        self.fruit_attack = self.fruit.get_dmg(self.atk) if fruit else None
-        self.actions = ['Attack', 'Block', 'Dodge']
-        if not self.fruit and not self.weapon:
-            self.attacks = ['Melee', 'Armament Haki']
-        elif self.fruit and not self.weapon:
-            self.attacks = ['Melee', 'Armament Haki', 'Devil Fruit Attack', 'Armament: Devil Fruit']
-        elif self.weapon and not self.fruit:
-            self.attacks = ['Melee', 'Armament Haki', 'Use Weapon', 'Armament: Weapon']
-        elif self.weapon and not self.fruit:
-            self.attacks = ['Melee', 'Armament Haki', 'Devil Fruit Attack', 'Armament: Devil Fruit',
+        self.__name = name
+        self.__maxhp = hp
+        self.__hp = hp
+        self.__maxhaki = haki
+        self.__haki = haki
+        self.__haki_attack = hcost
+        self.__atk = atk
+        self.__atkh = atk + 10
+        self.__atkl = atk - 10
+        self.__df = df
+        self.__weapon = weapon
+        self.__fruit = fruit
+        self.__fruit_attack = self.__fruit.get_dmg(self.__atk) if fruit else None
+        self.__actions = ['Attack', 'Block', 'Dodge']
+        if not self.__fruit and not self.__weapon:
+            self.__attacks = ['Melee', 'Armament Haki']
+        elif self.__fruit and not self.__weapon:
+            self.__attacks = ['Melee', 'Armament Haki', 'Devil Fruit Attack', 'Armament: Devil Fruit']
+        elif self.__weapon and not self.__fruit:
+            self.__attacks = ['Melee', 'Armament Haki', 'Use Weapon', 'Armament: Weapon']
+        elif self.__weapon and not self.__fruit:
+            self.__attacks = ['Melee', 'Armament Haki', 'Devil Fruit Attack', 'Armament: Devil Fruit',
                             'Use Weapon', 'Armament: Weapon']
 
     def get_fruit_dmg(self):
-        return random.randint(self.fruit_attack - 10, self.fruit_attack + 10) if self.fruit else 0
+        return random.randint(self.__fruit_attack - 10, self.__fruit_attack + 10) if self.__fruit else 0
 
     def take_damage(self, dmg):
-        self.hp -= dmg/self.df
-        if self.hp < 0:
-            self.hp = 0
-        return self.hp
+        self.__hp -= dmg / self.__df
+        if self.__hp < 0:
+            self.__hp = 0
+        return self.__hp
 
     def get_hp(self):
-        return self.hp
+        return self.__hp
 
     def get_maxhp(self):
-        return self.maxhp
+        return self.__maxhp
 
     def get_haki(self):
-        return self.haki
+        return self.__haki
 
     def get_maxhaki(self):
-        return self.maxhaki
+        return self.__maxhaki
 
     def take_haki(self, haki_used):
-        self.haki -= haki_used
+        self.__haki -= haki_used
 
     def get_devil_fruit(self):
-        return self.fruit
+        return self.__fruit
 
     def get_haki_cost(self):
-        return self.haki_attack
+        return self.__haki_attack
 
     def choose_action(self):
         print('What will you do?\n')
         i = 1
-        for item in self.actions:
+        for item in self.__actions:
             print(str(i)+": "+item)
             i += 1
         print('')
@@ -136,7 +136,7 @@ class Person:
     def choose_attack(self):
         print('What attack will you use?\n')
         i = 1
-        for item in self.attacks:
+        for item in self.__attacks:
             print(str(i)+": "+item)
             i += 1
         print('')
@@ -155,57 +155,57 @@ class Person:
 
     def get_weapon_dmg(self):
         try:
-            for i in self.weapon:
-                dmg = i.get_dmg(self.atk)
+            for i in self.__weapon:
+                dmg = i.get_dmg(self.__atk)
                 return random.randint(dmg - 10, dmg + 10)
         except:
-            dmg = self.weapon.get_dmg(self.atk)
+            dmg = self.__weapon.get_dmg(self.__atk)
             return random.randint(dmg - 10, dmg + 10)
 
     def generate_damage(self, choice):
-        dmg = random.randint(self.atkl, self.atkh)
-        if not self.fruit and not self.weapon:
+        dmg = random.randint(self.__atkl, self.__atkh)
+        if not self.__fruit and not self.__weapon:
             if choice == 1:
                 return dmg
             elif choice == 2:
-                return dmg * self.haki_attack
-        if self.fruit and not self.weapon:
+                return dmg * self.__haki_attack
+        if self.__fruit and not self.__weapon:
             if choice == 1:
                 return dmg
             elif choice == 2:
-                return dmg * self.haki_attack
+                return dmg * self.__haki_attack
             elif choice == 3:
                 return self.get_fruit_dmg()
             elif choice == 4:
-                return self.get_fruit_dmg() * self.haki_attack/2
-        if not self.fruit and self.weapon:
+                return self.get_fruit_dmg() * self.__haki_attack / 2
+        if not self.__fruit and self.__weapon:
             if choice == 1:
                 return dmg
             elif choice == 2:
-                return dmg * self.haki_attack
+                return dmg * self.__haki_attack
             elif choice == 3:
                 return self.get_weapon_dmg()
             elif choice == 4:
-                return self.get_weapon_dmg() * self.haki_attack / 2
-        if self.fruit and self.weapon:
+                return self.get_weapon_dmg() * self.__haki_attack / 2
+        if self.__fruit and self.__weapon:
             if choice == 1:
                 return dmg
             elif choice == 2:
-                return dmg * self.haki_attack
+                return dmg * self.__haki_attack
             elif choice == 3:
                 return self.get_fruit_dmg()
             elif choice == 4:
-                return self.get_fruit_dmg() * self.haki_attack/2
+                return self.get_fruit_dmg() * self.__haki_attack / 2
             elif choice == 5:
                 return self.get_weapon_dmg()
             elif choice == 6:
-                return self.get_weapon_dmg() * self.haki_attack / 2
-        if choice not in range(1, len(self.attacks)+1):
-            ch = int(input(f'That option is invalid, please enter a number between 1-{len(self.attacks)}: '))
+                return self.get_weapon_dmg() * self.__haki_attack / 2
+        if choice not in range(1, len(self.__attacks) + 1):
+            ch = int(input(f'That option is invalid, please enter a number between 1-{len(self.__attacks)}: '))
             return self.generate_damage(ch)
 
 
 class Enemy(Person):
     def attack(self):
-        choice = random.randint(1, len(self.attacks))
+        choice = random.randint(1, len(self.__attacks))
         return self.generate_damage(choice)
