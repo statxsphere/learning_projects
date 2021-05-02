@@ -14,15 +14,13 @@ class A:
         return self.__name
 
 class B(A):
-    def change_name(self, x):
-        self._name = x
-        self.__name = x
-
-    def get_name(self):
-        return self.__name
+    def called(self):
+        print('B')
 
 a = A()
 b = B()
 
-b.change_name('z')
 print(b.get_name())
+print(b.get_names())
+b.change_name('z')
+print(b.get_names())
