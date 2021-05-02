@@ -165,6 +165,9 @@ class Person:
             print('\n You dodged successfully! \n')
             return 0
 
+    def get_attacks(self):
+        return self.__attacks
+
     def get_weapon_dmg(self):
         try:
             for i in self.__weapon:
@@ -219,5 +222,5 @@ class Person:
 
 class Enemy(Person):
     def attack(self):
-        choice = random.randint(1, len(self.__attacks))
+        choice = random.randint(1, len(self.get_attacks()))
         return self.generate_damage(choice)
