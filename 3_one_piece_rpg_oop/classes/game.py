@@ -27,14 +27,23 @@ class FColors:
 
 class DevilFruit:
     def __init__(self, name, damage, type, special=None):
-        self.name = name
-        self.dmg = damage
-        self.type = type
-        self.spl = special
-        self.immunity = True if self.type == "Logia" else False
+        self.__name = name
+        self.__dmg = damage
+        self.__type = type
+        self.__spl = special
 
     def get_dmg(self, attack):
-        return attack + self.dmg
+        return attack + self.__dmg
+
+    def get_name(self):
+        return self.__name
+
+    def get_type(self):
+        return self.__type
+
+    def get_special(self):
+        return self.__spl
+
 
 class Weapon:
     def __init__(self, name, damage, grade):
