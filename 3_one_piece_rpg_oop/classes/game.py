@@ -60,7 +60,7 @@ class Weapon:
 
 
 class DevilFruits:
-    gomu = DevilFruit('gomu', 30, 'paramecia')
+    gomu = DevilFruit('Gomu Gomu No Mi', 30, 'paramecia')
 
 
 class Weapons:
