@@ -5,7 +5,7 @@ from classes.game import FColors as col
 
 
 Luffy = Person('Luffy', 500, 1000, 50, 40, 50, fruit=Df.gomu)
-Zoro = Person('Zoro', 600, 600, 35, 45, 35, weapon=Wp.Enma)
+Zoro = Person('Zoro', 600, 600, 35, 45, 35, weapon=[Wp.enma, Wp.s_kitetsu, Wp.w_ichimonji])
 
 l1 = [Luffy, Zoro]
 a=1

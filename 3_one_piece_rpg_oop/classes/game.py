@@ -60,11 +60,13 @@ class Weapon:
 
 
 class DevilFruits:
-    gomu = DevilFruit('Gomu Gomu No Mi', 30, 'paramecia')
+    gomu = DevilFruit('Gomu Gomu No Mi', 2, 'paramecia')
 
 
 class Weapons:
-    Enma = Weapon('Enma', 30, 'Great')
+    enma = Weapon('Enma', 30, 'Great')
+    s_kitetsu = Weapon('Sandai Kitetsu', 20, 'Good')
+    w_ichimonji = Weapon('Wado Ichimonji', 25, 'Great')
 
 
 class Person:
@@ -82,7 +84,7 @@ class Person:
         self.__weapon = weapon
         self.__fruit = fruit
         self.__fruit_attack = self.__fruit.get_dmg(self.__atk) if fruit else None
-        self.__actions = ['Attack', 'Block', 'Dodge']
+        self.__actions = ['Attack', 'Block using Haki', 'Dodge']
         if not self.__fruit and not self.__weapon:
             self.__attacks = ['Melee', 'Armament Haki']
         elif self.__fruit and not self.__weapon:
@@ -171,7 +173,7 @@ class Person:
     def get_weapon_dmg(self):
         try:
             for i in self.__weapon:
-                dmg = i.get_dmg(self.__atk)
+                dmg = i.get_dmg(self.__atk)/len(self.__weapon)
                 return random.randint(dmg - 10, dmg + 10)
         except:
             dmg = self.__weapon.get_dmg(self.__atk)
