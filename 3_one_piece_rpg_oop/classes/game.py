@@ -47,16 +47,16 @@ class DevilFruit:
 
 class Weapon:
     def __init__(self, name, damage, grade):
-        self.name = name
-        self.dmg = damage
-        self.grade = grade
-        self.use_count = 0
+        self.__name = name
+        self.__dmg = damage
+        self.__grade = grade
+        self.__use_count = 0
 
     def weapon_use(self):
-        self.use_count += 1
+        self.__use_count += 1
 
     def get_dmg(self, attack):
-        return attack + self.dmg
+        return attack + self.__dmg
 
 
 class DevilFruits:
