@@ -91,7 +91,7 @@ class Person:
             self.__attacks = ['Melee', 'Armament Haki', 'Use Weapon', 'Armament: Weapon']
         elif self.__weapon and not self.__fruit:
             self.__attacks = ['Melee', 'Armament Haki', 'Devil Fruit Attack', 'Armament: Devil Fruit',
-                            'Use Weapon', 'Armament: Weapon']
+                              'Use Weapon', 'Armament: Weapon']
 
     def get_fruit_dmg(self):
         return random.randint(self.__fruit_attack - 10, self.__fruit_attack + 10) if self.__fruit else 0
