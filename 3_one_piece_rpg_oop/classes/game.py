@@ -93,6 +93,9 @@ class Person:
             self.__attacks = ['Melee', 'Armament Haki', 'Devil Fruit Attack', 'Armament: Devil Fruit',
                               'Use Weapon', 'Armament: Weapon']
 
+    def get_name(self):
+        return self.__name
+
     def get_fruit_dmg(self):
         return random.randint(self.__fruit_attack - 10, self.__fruit_attack + 10) if self.__fruit else 0
 
@@ -117,8 +120,17 @@ class Person:
     def take_haki(self, haki_used):
         self.__haki -= haki_used
 
+    def get_atk(self):
+        return self.__atk
+
     def get_devil_fruit(self):
         return self.__fruit
+
+    def get_weapon(self):
+        return self.__weapon
+
+    def get_df(self):
+        return self.__df
 
     def get_haki_cost(self):
         return self.__haki_attack
