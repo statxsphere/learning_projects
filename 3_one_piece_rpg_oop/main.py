@@ -25,7 +25,7 @@ enemy = Enemy(ch2.get_name(), ch2.get_hp(), ch2.get_haki(), ch2.get_haki_cost(),
 running = True
 while running:
     choice1 = ch1.choose_action()
-    dmg1 = enemy.attack()
+    dmg1 = enemy.generate_damage()
 
     if choice1 == 1:
         choice = ch1.choose_attack()

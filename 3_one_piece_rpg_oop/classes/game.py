@@ -223,6 +223,9 @@ class Person:
 
 
 class Enemy(Person):
-    def attack(self):
+    def generate_damage(self, choice):
         choice = random.randint(1, len(self.get_attacks()))
         return self.generate_damage(choice)
+
+def attack(p, choice):
+    p.generate_damage()
