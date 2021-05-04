@@ -179,7 +179,7 @@ class Person:
             dmg = self.__weapon.get_dmg(self.__atk)
             return random.randint(dmg - 10, dmg + 10)
 
-    def generate_damage(self, choice):
+    def generate_damage(self, choice=choose_attack()):
         dmg = random.randint(self.__atkl, self.__atkh)
         if not self.__fruit and not self.__weapon:
             if choice == 1:
@@ -223,9 +223,10 @@ class Person:
 
 
 class Enemy(Person):
-    def generate_damage(self, choice):
+    def generate_damage(self, choice=1):
         choice = random.randint(1, len(self.get_attacks()))
         return self.generate_damage(choice)
 
-def attack(p, choice):
-    p.generate_damage()
+
+def attack(p):
+    return p.generate_damage()

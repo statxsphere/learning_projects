@@ -1,4 +1,4 @@
-from classes.game import Person, Enemy
+from classes.game import Person, Enemy, attack
 from classes.game import DevilFruits as Df
 from classes.game import Weapons as Wp
 from classes.game import FColors as col
@@ -25,7 +25,7 @@ enemy = Enemy(ch2.get_name(), ch2.get_hp(), ch2.get_haki(), ch2.get_haki_cost(),
 running = True
 while running:
     choice1 = ch1.choose_action()
-    dmg1 = enemy.generate_damage()
+    dmg1 = attack(enemy)
 
     if choice1 == 1:
         choice = ch1.choose_attack()
