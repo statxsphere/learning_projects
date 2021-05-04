@@ -28,8 +28,7 @@ while running:
     dmg1 = attack(enemy)
 
     if choice1 == 1:
-        choice = ch1.choose_attack()
-        dmg = ch1.generate_damage(choice)
+        dmg = attack(ch1)
 
         print(f'You attack! {enemy.get_name()} took {dmg / enemy.get_df()} damage, his HP is now: ')
         print(enemy.take_damage(dmg))
