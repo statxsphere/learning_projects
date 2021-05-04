@@ -185,6 +185,7 @@ class Person:
             if choice == 1:
                 return dmg
             elif choice == 2:
+                self.__haki -= self.__haki_attack
                 return dmg * self.__haki_attack
         if self.__fruit and not self.__weapon:
             if choice == 1:
