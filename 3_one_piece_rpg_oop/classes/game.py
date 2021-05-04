@@ -191,32 +191,39 @@ class Person:
             if choice == 1:
                 return dmg
             elif choice == 2:
+                self.__haki -= self.__haki_attack
                 return dmg * self.__haki_attack
             elif choice == 3:
                 return self.get_fruit_dmg()
             elif choice == 4:
+                self.__haki -= self.__haki_attack
                 return self.get_fruit_dmg() * self.__haki_attack / 2
         if not self.__fruit and self.__weapon:
             if choice == 1:
                 return dmg
             elif choice == 2:
+                self.__haki -= self.__haki_attack
                 return dmg * self.__haki_attack
             elif choice == 3:
                 return self.get_weapon_dmg()
             elif choice == 4:
+                self.__haki -= self.__haki_attack
                 return self.get_weapon_dmg() * self.__haki_attack / 2
         if self.__fruit and self.__weapon:
             if choice == 1:
                 return dmg
             elif choice == 2:
+                self.__haki -= self.__haki_attack
                 return dmg * self.__haki_attack
             elif choice == 3:
                 return self.get_fruit_dmg()
             elif choice == 4:
+                self.__haki -= self.__haki_attack
                 return self.get_fruit_dmg() * self.__haki_attack / 2
             elif choice == 5:
                 return self.get_weapon_dmg()
             elif choice == 6:
+                self.__haki -= self.__haki_attack
                 return self.get_weapon_dmg() * self.__haki_attack / 2
         if choice not in range(1, len(self.__attacks) + 1):
             ch = int(input(f'That option is invalid, please enter a number between 1-{len(self.__attacks)}: '))
