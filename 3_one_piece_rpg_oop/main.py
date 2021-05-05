@@ -15,7 +15,7 @@ for i in l1:
 
 
 ch1 = l1[int(input('Choose your character: ')) - 1]
-print(f'You have chosen {ch1.get_name()}.\n')
+ch1.display()
 ch2 = l1[int(input('Choose enemy: ')) - 1]
 print(f'You will be fighting against {ch2.get_name()}.\n')
 

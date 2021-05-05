@@ -58,12 +58,19 @@ class Weapon:
     def get_dmg(self, attack):
         return attack + self.__dmg
 
+    def get_name(self):
+        return self.__name
+
+    def get_grade(self):
+        return self.__grade
 
 class DevilFruits:
-    gomu = DevilFruit('Gomu Gomu No Mi', 2, 'paramecia')
+    no = DevilFruit('None', 0, '')
+    gomu = DevilFruit('Gomu Gomu No Mi', 2, 'Paramecia')
 
 
 class Weapons:
+    no = Weapon('None', 0, '')
     enma = Weapon('Enma', 30, 'Great')
     s_kitetsu = Weapon('Sandai Kitetsu', 20, 'Good')
     w_ichimonji = Weapon('Wado Ichimonji', 25, 'Great')
@@ -94,6 +101,11 @@ class Person:
         elif self.__weapon and not self.__fruit:
             self.__attacks = ['Melee', 'Armament Haki', 'Devil Fruit Attack', 'Armament: Devil Fruit',
                               'Use Weapon', 'Armament: Weapon']
+
+    def display(self):
+        print(f"You have selected {self.__name}. Here's what he's got:")
+        print(f'Devil Fruit: The {self.__fruit.get_type()} type fruit, {self.__fruit.get_name()}') if self.__fruit else "None"
+        print(f'Weapon: The {self.__weapon.get_grade()} grade sword, {self.__weapon.get_name()}') if self.__weapon else "None"
 
     def get_name(self):
         return self.__name
@@ -179,7 +191,8 @@ class Person:
             dmg = self.__weapon.get_dmg(self.__atk)
             return random.randint(dmg - 10, dmg + 10)
 
-    def generate_damage(self, choice=choose_attack()):
+    def generate_damage(self, choice=1):
+        choice = self.choose_attack()
         dmg = random.randint(self.__atkl, self.__atkh)
         if not self.__fruit and not self.__weapon:
             if choice == 1:

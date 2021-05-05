@@ -17,10 +17,10 @@ class B(A):
     def called(self):
         print('B')
 
-a = A()
+a = ""
 b = B()
-
-print(b.get_name())
-print(b.get_names())
-b.change_name('z')
-print(b.get_names())
+if not a:
+    print(b.get_name())
+# print(b.get_names())
+# b.change_name('z')
+# print(b.get_names())
