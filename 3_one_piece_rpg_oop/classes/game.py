@@ -105,9 +105,9 @@ class Person:
     def display(self):
         print(f"You have selected {self.__name}. Here's what he's got:")
         print(f'Devil Fruit: The {self.__fruit.get_type()} type fruit, {self.__fruit.get_name()}') if self.__fruit else\
-            "No devil fruit."
+            print("No devil fruit.")
         print(f'Weapon: The {self.__weapon.get_grade()} grade sword, {self.__weapon.get_name()}') if self.__weapon else\
-        "No weapon."
+            print("No weapon.")
         print(f'Hp: {self.__hp}.  Max Haki: {self.__maxhaki}')
         print(f'Atk: {self.__atk}.  Def: {self.__df}.  Haki Attacks (cost): {self.__haki_attack}.')
 
@@ -253,7 +253,7 @@ class Enemy(Person):
         return self.generate_damage(choice)
 
     def display(self):
-        print(f"You have selected {self.get_name()}. Here's what he's got:")
+        print(f"You will face {self.get_name()}. Here's what he's got:")
         print(f'Devil Fruit: The {self.get_devil_fruit().get_type()} type fruit, {self.get_devil_fruit().get_name()}') \
             if self.__fruit else print("No devil fruit.")
         print(f'Weapon: The {self.get_weapon().get_grade()} grade sword, {self.get_weapon().get_name()}') \
