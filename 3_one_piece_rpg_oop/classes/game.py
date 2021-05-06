@@ -106,7 +106,12 @@ class Person:
         print(f"You have selected {self.__name}. Here's what he's got:")
         print(f'Devil Fruit: The {self.__fruit.get_type()} type fruit, {self.__fruit.get_name()}') if self.__fruit else\
             print("No devil fruit.")
-        print(f'Weapon: The {self.__weapon.get_grade()} grade sword, {self.__weapon.get_name()}') if self.__weapon else\
+        if self.__weapon:
+            a = 1
+            for i in self.__weapon:
+                print(f'Weapon {a}: {i.get_name()} - The {i.get_grade()} grade sword.')
+                a += 1
+        else:
             print("No weapon.")
         print(f'Hp: {self.__hp}.  Max Haki: {self.__maxhaki}')
         print(f'Atk: {self.__atk}.  Def: {self.__df}.  Haki Attacks (cost): {self.__haki_attack}.')
@@ -256,8 +261,13 @@ class Enemy(Person):
         print(f"You will face {self.get_name()}. Here's what he's got:")
         print(f'Devil Fruit: The {self.get_devil_fruit().get_type()} type fruit, {self.get_devil_fruit().get_name()}') \
             if self.get_devil_fruit() else print("No devil fruit.")
-        print(f'Weapon: The {self.get_weapon().get_grade()} grade sword, {self.get_weapon().get_name()}') \
-            if self.get_weapon() else print("No weapon.")
+        if self.get_weapon():
+            a = 1
+            for i in self.get_weapon():
+                print(f'Weapon {a}: {i.get_name()} - The {i.get_grade()} grade sword.')
+                a += 1
+        else:
+            print("No weapon.")
         print(f'Hp: {self.get_hp()}.  Max Haki: {self.get_haki()}')
         print(f'Atk: {self.get_atk()}.  Def: {self.get_df()}.  Haki Attacks (cost): {self.get_haki_cost()}.')
 
