@@ -109,7 +109,7 @@ class Person:
         print(f'Weapon: The {self.__weapon.get_grade()} grade sword, {self.__weapon.get_name()}') if self.__weapon else/
         "No weapon."
         print(f'Hp: {self.__hp}.  Max Haki: {self.__maxhaki}')
-        print(f'Atk: {self.__atk}.  Def: {self.__df}.  Haki Attacks: {self.__haki_attack}.')
+        print(f'Atk: {self.__atk}.  Def: {self.__df}.  Haki Attacks (cost): {self.__haki_attack}.')
 
     def get_name(self):
         return self.__name
@@ -251,6 +251,15 @@ class Enemy(Person):
     def generate_damage(self, choice=1):
         choice = random.randint(1, len(self.get_attacks()))
         return self.generate_damage(choice)
+
+    def display(self):
+        print(f"You have selected {self.get_name()}. Here's what he's got:")
+        print(f'Devil Fruit: The {self.get_devil_fruit().get_type()} type fruit, {self.get_devil_fruit().get_name()}') \
+            if self.__fruit else print("No devil fruit.")
+        print(f'Weapon: The {self.get_weapon().get_grade()} grade sword, {self.get_weapon().get_name()}') \
+            if self.__weapon else print("No weapon.")
+        print(f'Hp: {self.get_hp()}.  Max Haki: {self.get_haki()}')
+        print(f'Atk: {self.get_atk()}.  Def: {self.get_df()}.  Haki Attacks (cost): {self.get_haki_cost()}.')
 
 
 def attack(p):
