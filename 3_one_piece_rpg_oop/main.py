@@ -17,10 +17,11 @@ for i in l1:
 ch1 = l1[int(input('Choose your character: ')) - 1]
 ch1.display()
 ch2 = l1[int(input('Choose enemy: ')) - 1]
-print(f'You will be fighting against {ch2.get_name()}.\n')
 
 enemy = Enemy(ch2.get_name(), ch2.get_hp(), ch2.get_haki(), ch2.get_haki_cost(), ch2.get_atk(), ch2.get_df(),
               fruit=ch2.get_devil_fruit(), weapon=ch2.get_weapon())
+enemy.display()
+
 
 running = True
 while running:

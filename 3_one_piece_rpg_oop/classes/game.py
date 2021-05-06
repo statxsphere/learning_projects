@@ -255,9 +255,9 @@ class Enemy(Person):
     def display(self):
         print(f"You will face {self.get_name()}. Here's what he's got:")
         print(f'Devil Fruit: The {self.get_devil_fruit().get_type()} type fruit, {self.get_devil_fruit().get_name()}') \
-            if self.__fruit else print("No devil fruit.")
+            if self.get_devil_fruit() else print("No devil fruit.")
         print(f'Weapon: The {self.get_weapon().get_grade()} grade sword, {self.get_weapon().get_name()}') \
-            if self.__weapon else print("No weapon.")
+            if self.get_weapon() else print("No weapon.")
         print(f'Hp: {self.get_hp()}.  Max Haki: {self.get_haki()}')
         print(f'Atk: {self.get_atk()}.  Def: {self.get_df()}.  Haki Attacks (cost): {self.get_haki_cost()}.')
 
