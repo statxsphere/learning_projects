@@ -103,7 +103,7 @@ class Person:
                               'Use Weapon', 'Armament: Weapon']
 
     def display(self):
-        print(f"You have selected {self.__name}. Here's what he's got:")
+        print(f"You have selected {self.__name}. Here's what he's got:\n")
         print(f'Devil Fruit: The {self.__fruit.get_type()} type fruit, {self.__fruit.get_name()}') if self.__fruit else\
             print("No devil fruit.")
         if self.__weapon:
@@ -114,7 +114,7 @@ class Person:
         else:
             print("No weapon.")
         print(f'Hp: {self.__hp}.  Max Haki: {self.__maxhaki}')
-        print(f'Atk: {self.__atk}.  Def: {self.__df}.  Haki Attacks (cost): {self.__haki_attack}.')
+        print(f'Atk: {self.__atk}.  Def: {self.__df}.  Haki Attacks (cost): {self.__haki_attack}.\n')
 
     def get_name(self):
         return self.__name
