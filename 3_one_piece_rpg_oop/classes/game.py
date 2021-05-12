@@ -64,6 +64,7 @@ class Weapon:
     def get_grade(self):
         return self.__grade
 
+
 class DevilFruits:
     no = DevilFruit('None', 0, '')
     gomu = DevilFruit('Gomu Gomu No Mi', 2, 'Paramecia')
